@@ -2,31 +2,40 @@
 glog 默认对log分为4级： INFO,  WARNING,  ERROR,  FATAL.  打印log语句类似于C++中的stream，实际上LOG(INFO) 宏返回的是一个继承自std::ostrstream类的对象。
 
 * 文件名各字段对应含义为：
-
+```
 <program name>.<hostname>.<user name>.log.<severity level>.<date>.<time>.<pid>
 
+
 Log file created at: 2019/01/15 19:56:46
+
 Running on machine: ww-pc
+
 Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+
 I0115 19:56:46.652129  9099 main.cpp:36] LOG level 0
+
 W0115 19:56:46.652541  9099 main.cpp:37] LOG level 1
+
 E0115 19:56:46.652675  9099 main.cpp:38] LOG level 2
+
 F0115 19:56:46.652817  9099 main.cpp:39] LOG level 3
 
+```
 
 其中：
 ```
-1），<program name> 其实对应google::InitGoogleLogging(argv[0])；中的argv[0]，即通过改变google::InitGoogleLogging的参数可以修改日志文件的名称。
+1）<program name> 其实对应google::InitGoogleLogging(argv[0])；中的argv[0]，即通过改变google::InitGoogleLogging的参数可以修改日志文件的名称。
 
-2），每个级别的日志会输出到不同的文件中。并且高级别日志文件会同样输入到低级别的日志文件中。 即：FATAL的信息会同时记录在INFO，WARNING，ERROR，FATAL日志文件中。默认情况下，glog还会将会将FATAL的日志发送到stderr中。
+2）每个级别的日志会输出到不同的文件中。并且高级别日志文件会同样输入到低级别的日志文件中。 即：FATAL的信息会同时记录在INFO，WARNING，ERROR，FATAL日志文件中。默认情况下，glog还会将会将FATAL的日志发送到stderr中。
 ```
 
 ## glog 编译
 
-`g++ b.cpp -lglog -lpthread -o a.out`
+* 例如：
 
+`g++ test.cpp -lglog -lpthread -o a.out`
 
-`g++ a.cpp -lglog -lpthread -lgflags -o a.out`
+`g++ main.cpp -lglog -lpthread -lgflags -o a.out`
 
 
 ---

@@ -1,0 +1,4 @@
+Log file created at: 2019/01/15 19:55:10
+Running on machine: ww-pc
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+F0115 19:55:10.446288  9027 main.cpp:39] LOG level 3
